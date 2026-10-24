@@ -1,0 +1,186 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('Media/fondo.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: #111;
+    background-attachment: fixed;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Contenedor principal */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Efecto Líquido del Título */
+.liquid-container {
+    position: relative;
+    font-size: 8rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.liquid-container::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: #00f3ff;
+    overflow: hidden;
+    -webkit-background-clip: text;
+    background-clip: text;
+    border-bottom: 8px solid #00f3ff;
+    animation: waveEffect 5s ease-in-out infinite;
+}
+
+@keyframes waveEffect {
+    0%, 100% {
+        height: 0%;
+    }
+    50% {
+        height: 100%;
+    }
+}
+
+/* Sección de imagen pequeña y biografía */
+.info-section {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-top: 30px;
+    max-width: 600px;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 15px 25px;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+}
+
+.profile-img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #00f3ff;
+    flex-shrink: 0;
+}
+
+.bio-text {
+    color: #ffffff;
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+/* Apartado de redes sociales y creador */
+.social-section {
+    margin-top: 90px;
+    text-align: center;
+    width: 100%;
+    max-width: 700px;
+}
+
+.social-section h3 {
+    color: #00f3ff;
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+}
+
+/* Línea divisoria celeste debajo del título */
+.social-divider {
+    width: 120px;
+    height: 3px;
+    background-color: #00f3ff;
+    margin: 0 auto 25px auto;
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+}
+
+.social-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
+}
+
+.social-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: rgba(0, 0, 0, 0.85);
+    padding: 12px 22px;
+    border-radius: 30px;
+    text-decoration: none;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    backdrop-filter: blur(5px);
+}
+
+.social-item:hover {
+    background-color: rgba(0, 243, 255, 0.2);
+    border-color: #00f3ff;
+    transform: translateY(-3px);
+}
+
+.social-icon {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    display: block;
+}
+
+
+/* ==========================================
+   ADAPTACIÓN PARA MÓVILES (Pantallas chicas)
+   ========================================== */
+@media (max-width: 768px) {
+    /* Achicamos el título gigante para que quepa en el celular */
+    .liquid-container {
+        font-size: 4rem;
+    }
+
+    /* Cambiamos la biografía a columna (foto arriba, texto abajo) para que no se apretuje */
+    .info-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+        gap: 15px;
+        max-width: 90%;
+    }
+
+    /* Adaptamos los botones de las redes para que ocupen buen ancho en el móvil */
+    .social-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .social-item {
+        width: 85%;
+        max-width: 300px;
+        justify-content: flex-start;
+    }
+}
